@@ -1,0 +1,24 @@
+sudo: required
+language: generic
+
+services:
+  - docker
+
+before_install:
+  - docker build -t colteks/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run -e CI=true colteks/react-test npm test
+
+after_success:
+  - docker build -t colteks/multi-client ./client
+  - docker build -t colteks/multi-nginx ./nginx
+  - docker build -t colteks/multi-server ./server
+  - docker build -t colteks/multi-worker ./worker
+  # Log in to the docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # Take those images and push them to docker hub
+  - docker push colteks/multi-client
+  - docker push colteks/multi-nginx
+  - docker push colteks/multi-server
+  - docker push colteks/multi-worker
