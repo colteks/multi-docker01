@@ -5,10 +5,17 @@ services:
   - docker
 
 before_install:
+<<<<<<< HEAD
   - docker build -t stephengrider/react-test -f ./client/Dockerfile.dev ./client
 
 script:
   - docker run -e CI=true stephengrider/react-test npm test
+=======
+  - docker build -t colteks/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run -e CI=true colteks/react-test npm test
+>>>>>>> bfaa5b234dc284946581fd688f31374bfd630da2
 
 after_success:
   - docker build -t colteks01/multi-client ./client
@@ -22,6 +29,7 @@ after_success:
   - docker push colteks01/multi-nginx
   - docker push colteks01/multi-server
   - docker push colteks01/multi-worker
+<<<<<<< HEAD
 
 deploy:
   provider: elasticbeanstalk
@@ -34,3 +42,5 @@ deploy:
     branch: main
   access_key_id: $AWS_ACCESS_KEY
   secret_access_key: $AWS_SECRET_KEY
+=======
+>>>>>>> bfaa5b234dc284946581fd688f31374bfd630da2

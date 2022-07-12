@@ -17,7 +17,11 @@ function App() {
             target="_blank"
             rel="noopener noreferrer"
           >
+<<<<<<< HEAD
             Learn React Now! Now!
+=======
+            Learn React
+>>>>>>> bfaa5b234dc284946581fd688f31374bfd630da2
           </a>
           <Link to="/">Home</Link>
           <Link to="/otherpage">Other Page</Link>
