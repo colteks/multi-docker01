@@ -11,10 +11,10 @@ before_install:
 script:
   - docker run -e CI=true colteks01/react-test npm test
 
-  - docker build -t colteks/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t colteks01/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true colteks/react-test npm test
+  - docker run -e CI=true colteks01/react-test npm test
 
 after_success:
   - docker build -t colteks01/multi-client ./client
