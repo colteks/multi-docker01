@@ -6,10 +6,10 @@ services:
 
 before_install:
 
-  - docker build -t stephengrider/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t colteks01/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true stephengrider/react-test npm test
+  - docker run -e CI=true colteks01/react-test npm test
 
   - docker build -t colteks/react-test -f ./client/Dockerfile.dev ./client
 
